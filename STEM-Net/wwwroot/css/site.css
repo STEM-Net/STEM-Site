@@ -1,0 +1,103 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.nav-widget {
+    padding-left: 7rem;
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+#main-header {
+    background: #262626;
+}
+
+#sub-header {
+    background: #404040;
+}
+
+.navbar {
+    color: white;
+    padding: 1rem;
+}
+
+#main-header i {
+    font-size: 2.5em;
+}
+
+.nav-control-label {
+    margin-left:0.75em;
+    margin-right:0.75em;
+}
+
+.nav-group {
+    border: 0px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    border-right: 1px;
+    border-style: solid;
+    border-color: grey;
+}
+
+header {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width:100%;
+}
+
+main {
+    margin-top: 5.71rem;
+    background: red;
+}
+
+body {
+  /* Margin bottom by footer height */  
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
