@@ -2,33 +2,178 @@
     ViewData["Title"] = "Home Page";
 }
 
-<link href="~/css/main.css" rel="stylesheet" />
-@*
-<!---Resizable panel section-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="~/lib/pane-splitter/jquery.slider.js"></script>
 
-<div class="wrapper">
-    <div id="panelContainer">
-        <div class="panel one">
-            <div class="content">
-                <h1>jQuery Pane Slider Example</h1>
-                <div id="carbon-block" style="margin:30px auto"></div>
-                <div style="margin:30px auto">
+<link href="~/css/main.css" rel="stylesheet" />
+<script src="~/lib/range-slider/js/ion.rangeSlider.min.js"></script>
+<link href="~/lib/range-slider/css/ion.rangeSlider.min.css" rel="stylesheet" />
+
+@*
+    <!---Resizable panel section-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/lib/pane-splitter/jquery.slider.js"></script>
+
+    <div class="wrapper">
+        <div id="panelContainer">
+            <div class="panel one">
+                <div class="content">
+                    <h1>jQuery Pane Slider Example</h1>
+                    <div id="carbon-block" style="margin:30px auto"></div>
+                    <div style="margin:30px auto">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="panel two">
-            <div class="content">
-                Panel Two
+            <div class="panel two">
+                <div class="content">
+                    Panel Two
+                </div>
+                <span class="slider"></span>
             </div>
-            <span class="slider"></span>
         </div>
     </div>
-</div>
 *@
 
 @*<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>*@
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+
+<div class="wrapper container">
+    <div class="row">
+        <div id="content" class="col">
+
+        </div>
+        <div id="sidebar" class="fixed">
+            <div class="sidebar-header">
+                <h2>Filters</h2>
+            </div>
+            <div class="h-divider">
+            </div>
+            <div class="bs-component">
+                <form>
+                    <fieldset>
+                        <fieldset class="form-group">
+                            <label for="select-species">Species</label>
+                            <select id="select-species" class="form-control">
+                                <option>None selected</option>
+                            </select>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="select-age">Age Class</label>
+                            <select id="select-age" class="form-control">
+                                <option>None selected</option>
+                                <option>Seedling</option>>
+                                <option>Sapling</option>
+                                <option>Pole</option>
+                                <option>Mature</option>
+                            </select>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="select-owner">Landownership Type</label>
+                            <select id="select-owner" class="form-control">
+                                <option>None selected</option>
+                                <option>City Property</option>
+                                <option>City Park</option>
+                                <option>Private</option>
+                            </select>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="select-diameter">Diameter</label>
+                            <select id="select-diameter" class="form-control">
+                                <option>None selected</option>
+                                <option>None selected</option>
+                                <option>None selected</option>
+                                <option>None selected</option>
+                                <option>None selected</option>
+                            </select>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="rangeMoisture">Moisture</label>
+                            <div class="form-control-wrap">
+                                <input id="rangeMoisture" type="text" class="js-range-slider" name="my_range" value="" />
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset class="form-group" style="margin-top: 2rem">
+                            <button type="reset" class="btn btn-secondary">Clear Filters</button>
+                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        </fieldset>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var $range = $(".js-range-slider");
+    var $inputFrom = $("#low-bound");
+    var $inputTo = $("#up-bound");
+    var instance;
+    var min = 0;
+    var max = 15400;
+    var from = 0;
+    var to = 0;
+
+    $range.ionRangeSlider({
+        type: "double",
+        grid: true,
+        min: 0,
+        max: 50,
+        from: 0,
+        to: 15400,
+        skin: "flat",
+        onStart: updateInputs,
+        onChange: updateInputs,
+        onFinish: updateInputs
+    });
+
+    instance = $range.data("ionRangeSlider");
+
+    function updateInputs(data) {
+        from = data.from;
+        to = data.to;
+
+        $inputFrom.prop("value", from);
+        $inputTo.prop("value", to);
+    }
+
+    $inputFrom.on("change", function () {
+        var val = $(this).prop("value");
+
+        // validate
+        if (val < min) {
+            val = min;
+        } else if (val > to) {
+            val = to;
+        }
+
+        instance.update({
+            from: val
+        });
+
+        $(this).prop("value", val);
+
+    });
+
+    $inputTo.on("change", function () {
+        var val = $(this).prop("value");
+
+        // validate
+        if (val < from) {
+            val = from;
+        } else if (val > max) {
+            val = max;
+        }
+
+        instance.update({
+            to: val
+        });
+
+        $(this).prop("value", val);
+    });
+</script>

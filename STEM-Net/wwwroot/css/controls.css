@@ -26,17 +26,17 @@
     transition: .4s;
 }
 
-    .toggle:before {
-        position: absolute;
-        content: "";
-        height: 0.95rem;
-        width: 0.95rem;
-        left: 0.19rem;
-        bottom: 0.175rem;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
+.toggle:before {
+    position: absolute;
+    content: "";
+    height: 0.95rem;
+    width: 0.95rem;
+    left: 0.19rem;
+    bottom: 0.175rem;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
 
 input:checked + .toggle {
     background-color: #2196F3;
@@ -57,6 +57,40 @@ input:checked + .toggle:before {
     border-radius: 1.33rem;
 }
 
-    .toggle.round:before {
-        border-radius: 50%;
-    }
+.toggle.round:before {
+    border-radius: 50%;
+}
+
+label {
+    font-size: 0.875rem;
+    color: rgb(50, 49, 48);
+    font-weight: 600;
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    /*border: 1px solid rgb(138, 136, 134);*/
+    border-radius: 2px
+}
+
+.btn {
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid rgb(138, 136, 134);
+    border-radius: 2px
+}
+
+.btn-secondary {
+    background: white;
+    color: rgb(50, 49, 48);
+}
+
+.btn-secondary:hover {
+    background: #ebebeb;
+    color: black;
+}
+
+select {
+    
+}
