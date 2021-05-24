@@ -1,0 +1,35 @@
+﻿@using STEM_Net.Models
+@model List<Sensor>
+
+<table>
+    @{
+        foreach (Sensor sensor in Model)
+        {
+            <tr>
+                <td>@sensor.DeviceId</td>
+                <td>@sensor.Name</td>
+                <td>@sensor.Moisture</td>
+                <td>@sensor.Longitude</td>
+                <td>@sensor.Latitutde</td>
+                <td>@sensor.ScientificName</td>
+                <td>@sensor.Genus</td>
+                <td>@sensor.Species</td>
+                <td>@sensor.TreeAge</td>
+                <td>@sensor.Diameter</td>
+                <td>@sensor.Height</td>
+                <td>@sensor.TrunkHeight</td>
+                <td>@sensor.TrunkDiameter</td>
+                <td>@sensor.CanopyShape</td>
+                <td>@sensor.Stems</td>
+                <td>@sensor.InstallDate</td>
+                <td>@sensor.MaintenanceNeed</td>
+                <td>@sensor.SpaceWidth</td>
+                <td>@sensor.SpaceLength</td>
+                <td>@sensor.VacantSite</td>
+                <td>@sensor.Active</td>
+                <td>@sensor.LastUpdate</td>
+            </tr>
+        }
+    }
+
+</table>

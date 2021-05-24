@@ -1,0 +1,33 @@
+﻿#popup {
+    background: white;
+    width: 20rem;
+    padding: 0.5rem;
+}
+
+#popup-wrapper {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+h4 {
+    font-weight: 600;
+    margin: 0;
+    font-size: 1rem;
+}
+
+h5 {
+    font-size: 1rem;
+    color: grey;
+}
+
+#chart-wrapper {
+    margin-top: 1rem;
+    width: 15rem;
+}
+
+a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(0, 112, 192) !important;
+    text-decoration: underline !important; 
+}

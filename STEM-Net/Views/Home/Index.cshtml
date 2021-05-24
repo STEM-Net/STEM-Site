@@ -2,10 +2,10 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <link href="~/css/main.css" rel="stylesheet" />
 <script src="~/lib/range-slider/js/ion.rangeSlider.min.js"></script>
 <link href="~/lib/range-slider/css/ion.rangeSlider.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
 @*
     <!---Resizable panel section-->
@@ -37,9 +37,65 @@
         <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>*@
 
+<script>
+    function loadData(element, id) {
+        $.ajax({
+            url: "../Home/GetMoisture",
+            type: "POST",
+            beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                //$('#loader').removeClass('hidden')
+            },
+            data: {
+                deviceId: id
+            },
+            success: function (data) {
+                element.innerHTML = data;
+                renderChart();
+            },
+            error: function () {
+
+            },
+            complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                //$('#loader').addClass('hidden')
+            }
+        });
+    }
+
+    $("#apply-filters").click(function () {
+        beginIndex = 0;
+        endIndex = 24;
+        loadedEverything = false;
+        $("#influencersGrid").empty();
+        loadData();
+    });
+</script>
+
 <div class="wrapper container">
-    <div class="row">
+    <div class="row" style="height:100%;">
         <div id="content" class="col">
+            <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+            <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+            <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+            <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+            <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+
+            <link href="../css/map.css" rel="stylesheet" />
+            <script src="../js/map.js"></script>
+
+            <div id="myMap" style="width: 100%; height: 100%;"></div>
+            <div id="search">
+                <div class="search-input-box">
+                    <div class="search-input-group">
+                        <div class="search-icon" type="button"></div>
+                        <input id="search-input" type="text" placeholder="Search">
+                    </div>
+                </div>
+                <ul id="results-panel"></ul>
+            </div>
+            <script type="text/javascript">
+                GetMap();
+            </script>
 
         </div>
         <div id="sidebar" class="fixed">
@@ -95,7 +151,6 @@
                             <div class="form-control-wrap">
                                 <input id="rangeMoisture" type="text" class="js-range-slider" name="my_range" value="" />
                             </div>
-
                         </fieldset>
 
                         <fieldset class="form-group" style="margin-top: 2rem">
@@ -177,3 +232,4 @@
         $(this).prop("value", val);
     });
 </script>
+<script src="~/js/popup.js"></script>

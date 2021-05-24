@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <link href="~/css/popup.css" rel="stylesheet" />
+
+    <div id="popup">
+        <div id="popup-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="fixed">
+                        <img src="~/img/popup-icon.png" style="height: 2.5rem;" />
+                    </div>
+                    <div class="col">
+                        <h4>STREET TREE: </h4>
+                        <h5>ID: </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="fixed">
+
+                    </div>
+                    <div class="col">
+                        <div id="chart-wrapper">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <h2 style="position:absolute; left:6.75rem;top:6.5rem;">30%</h2>
+                        <h5 style="position:absolute; left:5.75rem;top:9rem;">Soil Moisture</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="#" style="margin-right: 1rem;">More Information</a>
+            <a href="#">Historical Data</a>
+        </div>
+    </div>
+    <script src="~/js/popup.js"></script>
+
+    @*<script>
+        Chart.defaults.global.legend.display = false;
+        Chart.defaults.global.tooltips.enabled = false;
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Red", "Blue"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [30, 20],
+                    backgroundColor: [
+                        'rgba(0, 112, 191)',
+                        'rgba(211, 211, 211)'
+                    ]
+                }]
+            },
+            options: {
+                rotation: 1 * Math.PI,
+                circumference: 1 * Math.PI
+            }
+        });
+    </script>*@
+
+@*<script>
+        var beginIndex = 0;
+        var endIndex = 24;
+
+        function loadData() {
+            $.ajax({
+                url: "@(Url.Action("ListInfluencers"))",
+                type: "POST",
+                beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                    $('#loader').removeClass('hidden')
+                },
+                data: {
+                    begin: beginIndex,
+                    end: endIndex,
+                    seed: sessionSeed,
+                    orderBy: $("#filter").children("option:selected").val().toString(),
+                    priceLowBound: parseInt($("#low-bound").prop("value")),
+                    priceHighBound: parseInt($("#high-bound").prop("value"))
+                },
+                success: function (data) {
+                    if ($.trim(data.toString()) === "") {
+                        loadedEverything = true;
+                    }
+                    $("#influencersGrid").append(data);
+                },
+                error: function () {
+
+                },
+                complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                    $('#loader').addClass('hidden')
+                }
+            });
+            beginIndex += 24;
+            endIndex += 24;
+        }
+    </script>*@

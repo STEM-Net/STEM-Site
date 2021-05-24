@@ -70,7 +70,6 @@ label {
 .form-control {
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
-    /*border: 1px solid rgb(138, 136, 134);*/
     border-radius: 2px
 }
 
@@ -91,6 +90,8 @@ label {
     color: black;
 }
 
-select {
-    
+option {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 2px
 }

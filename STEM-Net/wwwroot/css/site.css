@@ -94,14 +94,14 @@ header {
     width:100%;
 }
 
-main {
+#main {
     height: 100%;
-    padding-bottom: 60px;
+    padding-bottom: 60px !important;
 }
 
 body {
     /* Margin bottom by footer height */
-    padding-top: 7.34rem;
+    padding-top: 7.34rem !important;
 }
 
 .footer {
