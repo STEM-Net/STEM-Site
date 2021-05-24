@@ -13531,11 +13531,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\qinjoshua\\source\\repos\\STEM-Net\\STEM-Net\\STEM-Net.csproj",
+      "projectUniqueName": "C:\\Users\\qinjoshua\\source\\repos\\qinjoshua\\STEM-Site\\STEM-Net\\STEM-Net.csproj",
       "projectName": "STEM-Net",
-      "projectPath": "C:\\Users\\qinjoshua\\source\\repos\\STEM-Net\\STEM-Net\\STEM-Net.csproj",
+      "projectPath": "C:\\Users\\qinjoshua\\source\\repos\\qinjoshua\\STEM-Site\\STEM-Net\\STEM-Net.csproj",
       "packagesPath": "C:\\Users\\qinjoshua\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\qinjoshua\\source\\repos\\STEM-Net\\STEM-Net\\obj\\",
+      "outputPath": "C:\\Users\\qinjoshua\\source\\repos\\qinjoshua\\STEM-Site\\STEM-Net\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

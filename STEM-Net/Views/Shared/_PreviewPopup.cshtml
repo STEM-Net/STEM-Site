@@ -11,27 +11,27 @@
                     <img src="~/img/popup-icon.png" style="height: 2.5rem;" />
                 </div>
                 <div class="col">
-                    <h4>STREET TREE: </h4>
-                    <h5>ID: </h5>
+                    <h4>STREET TREE: @Model.Name</h4>
+                    <h5>ID: @Model.DeviceId</h5>
                 </div>
             </div>
             <div class="row">
                 <div class="fixed">
-
                 </div>
                 <div class="col">
                     <div id="chart-wrapper">
                         <canvas id="myChart"></canvas>
                     </div>
-                    <h2 style="position:absolute; left:6.8rem;top:6.5rem;">30%</h2>
-                    <h5 style="position:absolute; left:5.75rem;top:9rem;">Soil Moisture</h5>
+                    <h2 id="moisture-heading">@Math.Round(Model.Moisture).ToString()%</h2>
+                    <h6>Soil Moisture</h6>
                 </div>
             </div>
         </div>
     </div>
     <div>
         <a href="#" style="margin-right: 1rem;">More Information</a>
-        <a href="#">Historical Data</a>
+        <a href="#" style="margin-right: 1rem;"data-toggle="modal" data-target="#exampleModal">Historical Data</a>
+        <a href="#" data-toggle="modal" data-target="#reportModal">Report Actions</a>
     </div>
 </div>
 

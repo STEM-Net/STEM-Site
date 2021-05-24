@@ -44,7 +44,10 @@
 
     <header>
         <nav id="main-header" class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow">
-            <span class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">STEM Net</span>
+            <span class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <img height="45" style="margin-right:1rem;" src="~/img/stem-net-logo.png" />
+                STEM Net
+            </span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,21 +55,26 @@
 
             <div class="nav-widget">
                 <i class="bi bi-cloud-rain"></i>
-                <div>
-                    <span></span>
-                    <span></span>
+                <div style="float:right;margin-left:1rem;margin-top:0.25rem;">
+                    <h2 style="margin-bottom:0rem;">0 inches</h2>
+                    24 hour precipitation
                 </div>
             </div>
 
             <div class="nav-widget">
                 <i class="bi bi-droplet"></i>
-                <div>
-
+                <div style="float:right;margin-left:1rem;margin-top:0.25rem;">
+                    <h2 style="margin-bottom:0rem;">0.02 inches</h2>
+                    72 hour precipitation
                 </div>
             </div>
 
             <div class="nav-widget">
                 <i class="bi bi-thermometer-half"></i>
+                <div style="float:right;margin-left:1rem;margin-top:0.25rem;">
+                    <h2 style="margin-bottom:0rem;">65°</h2>
+                    Average Temperature
+                </div>
             </div>
         </nav>
         <nav id="sub-header" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
