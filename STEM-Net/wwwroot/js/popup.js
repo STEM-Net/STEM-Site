@@ -1,6 +1,10 @@
 ﻿Chart.defaults.global.legend.display = false;
 Chart.defaults.global.tooltips.enabled = false;
 
+function renderLoader() {
+
+}
+
 function renderChart() {
     var moisture = document.getElementById("moisture-heading").innerHTML.slice(0, -1);
 

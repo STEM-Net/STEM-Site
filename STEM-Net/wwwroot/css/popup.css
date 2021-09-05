@@ -48,3 +48,7 @@ a {
     color: rgb(0, 112, 192) !important;
     text-decoration: underline !important; 
 }
+
+#popup-links {
+    text-align: center;
+}

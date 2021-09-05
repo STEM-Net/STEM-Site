@@ -68,3 +68,4 @@ C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\netcoreap
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\netcoreapp2.2\STEM-Net.dll
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\netcoreapp2.2\STEM-Net.pdb
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\netcoreapp2.2\STEM-Net.csproj.CopyComplete
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_PreviewPopupLoading.g.cshtml.cs

@@ -37,28 +37,37 @@ namespace STEM_Net.Controllers
         public IActionResult GetMoisture(string deviceId)
         {
             Sensor sensor = new Sensor();
-            using (SqlConnection connection = new SqlConnection("Data Source=iotdataserverjoshie.database.windows.net;Initial Catalog=iotdata;User ID=joshie;Password=Pranav_12;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
-            {
-                using (SqlCommand cmd = new SqlCommand("SELECT min(measureddatetime), avg(moisture) as moisture FROM SensorMoisture where deviceid=" + deviceId, connection))
-                {
-                    connection.Open();
-                    try
-                    {
-                        SqlDataReader rdr = cmd.ExecuteReader();
-                        while (rdr.Read())
-                        {
-                            sensor.DeviceId = deviceId;
-                            sensor.Moisture = Convert.ToInt32(rdr["moisture"]);
-                            sensor.Name = "Tree Moisture Sensor";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        return null;
-                    }
-                }
-            }
+            //using (SqlConnection connection = new SqlConnection("Data Source=iotdataserverjoshie.database.windows.net;Initial Catalog=iotdata;User ID=joshie;Password=Pranav_12;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("SELECT min(measureddatetime), avg(moisture) as moisture FROM SensorMoisture where deviceid=" + deviceId, connection))
+            //    {
+            //        try
+            //        {
+            //            connection.Open();
+            //            SqlDataReader rdr = cmd.ExecuteReader();
+            //            while (rdr.Read())
+            //            {
+            //                sensor.DeviceId = deviceId;
+            //                sensor.Moisture = Convert.ToInt32(rdr["moisture"]);
+            //                sensor.Name = "Tree Moisture Sensor";
+            //            }
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            makeMockSensor(sensor, deviceId);
+            //        }
+            //    }
+            //}
+            makeMockSensor(sensor, deviceId);
             return PartialView("_PreviewPopup", sensor);
+        }
+
+        private void makeMockSensor(Sensor sensor, string deviceId)
+        {
+            sensor.DeviceId = deviceId;
+            Random random = new Random(deviceId.GetHashCode());
+            sensor.Moisture = random.Next(60);
+            sensor.Name = "Tree Moisture Sensor";
         }
 
         //[HttpPost]

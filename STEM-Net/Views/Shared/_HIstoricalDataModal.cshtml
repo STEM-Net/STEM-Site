@@ -1,0 +1,31 @@
+﻿@using STEM_Net.Models
+@model Sensor
+
+<link href="~/css/modal.css" rel="stylesheet" />
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 modal-left-pane">
+                        <div class="container">
+                            <div class="row">
+                                <div class="fixed">
+                                    <img src="~/img/popup-icon.png" style="height: 2.5rem;" />
+                                </div>
+                                <div class="col">
+                                    <h4>STREET TREE: @Model.Name</h4>
+                                    <h5>ID: @Model.DeviceId</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 modal-right-pane">
+                        <canvas id="historical-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

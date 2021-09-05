@@ -190,11 +190,13 @@ function search() {
 
     });
 }
+
 function itemHovered(id) {
     //Show a popup when hovering an item in the result list.
     var shape = datasource.getShapeById(id);
     showPopup(shape);
 }
+
 function itemClicked(id) {
     //Center the map over the clicked item from the result list.
     var shape = datasource.getShapeById(id);
@@ -203,6 +205,7 @@ function itemClicked(id) {
         zoom: 17
     });
 }
+
 function showPopup(shape) {
     var properties = shape.getProperties();
     //Create the HTML content of the POI to show in the popup.
@@ -234,6 +237,7 @@ function showPopup(shape) {
     });
     popup.open(map);
 }
+
 function featureClicked(e) {
     //Make sure the event occurred on a shape feature.
     if (e.shapes && e.shapes.length > 0) {
