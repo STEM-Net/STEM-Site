@@ -34,6 +34,12 @@ namespace STEM_Net.Controllers
         }
 
         [HttpPost]
+        public IActionResult GetHistoricalData(string deviceId)
+        {
+            return PartialView("_HistoricalDataModal");
+        }
+
+        [HttpPost]
         public IActionResult GetMoisture(string deviceId)
         {
             Sensor sensor = new Sensor();
@@ -62,6 +68,7 @@ namespace STEM_Net.Controllers
             return PartialView("_PreviewPopup", sensor);
         }
 
+        // TODO: Delete this
         private void makeMockSensor(Sensor sensor, string deviceId)
         {
             sensor.DeviceId = deviceId;

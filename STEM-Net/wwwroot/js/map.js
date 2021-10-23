@@ -16,18 +16,18 @@ function GetMap() {
         //Add authentication details for connecting to Azure Maps.
         authOptions: {
             //Use Azure Active Directory authentication.
-            authType: 'anonymous',
-            clientId: "04ec075f-3827-4aed-9975-d56301a2d663", //Your Azure Active Directory client id for accessing your Azure Maps account.
-            getToken: function (resolve, reject, map) {
-                //URL to your authentication service that retrieves an Azure Active Directory Token.
-                var tokenServiceUrl = "https://azuremapscodesamples.azurewebsites.net/Common/TokenService.ashx";
+            //authType: 'anonymous',
+            //clientId: "", //Your Azure Active Directory client id for accessing your Azure Maps account.
+            //getToken: function (resolve, reject, map) {
+            //    //URL to your authentication service that retrieves an Azure Active Directory Token.
+            //    var tokenServiceUrl = "https://azuremapscodesamples.azurewebsites.net/Common/TokenService.ashx";
 
-                fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
-            }
+            //    fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
+            //}
 
             //Alternatively, use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
-            , authType: 'subscriptionKey',
-            subscriptionKey: 'DtI_mMmug86gC2J8od5ZpOSZx8yUn4kdaDrlhYVdpZ8'
+            authType: 'subscriptionKey',
+            subscriptionKey: ''
         }
     });
 

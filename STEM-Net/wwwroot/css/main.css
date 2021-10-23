@@ -27,6 +27,12 @@ h2 {
 }
 
 
+@media only screen and (max-width: 1026px) {
+    .nav-widget {
+        display: none;
+    }
+}
+
 /*#panelContainer {
     display: flex;
     flex-direction: row;
