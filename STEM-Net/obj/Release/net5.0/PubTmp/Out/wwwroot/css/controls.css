@@ -1,0 +1,97 @@
+﻿/* The switch - the box around the toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 2.35rem;
+    height: 1.3rem;
+}
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+/* The toggle */
+.toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.toggle:before {
+    position: absolute;
+    content: "";
+    height: 1rem;
+    width: 1rem;
+    left: 0.2rem;
+    bottom: 0.15rem;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .toggle {
+    background-color: #2196F3;
+}
+
+input:focus + .toggle {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .toggle:before {
+    -webkit-transform: translateX(1rem);
+    -ms-transform: translateX(1rem);
+    transform: translateX(1rem);
+}
+
+/* Rounded toggles */
+.toggle.round {
+    border-radius: 1.33rem;
+}
+
+.toggle.round:before {
+    border-radius: 50%;
+}
+
+label {
+    font-size: 0.875rem;
+    color: rgb(50, 49, 48);
+    font-weight: 600;
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 2px
+}
+
+.btn {
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid rgb(138, 136, 134);
+    border-radius: 2px
+}
+
+.btn-secondary {
+    background: white;
+    color: rgb(50, 49, 48);
+}
+
+.btn-secondary:hover {
+    background: #ebebeb;
+    color: black;
+}
+
+option {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 2px
+}

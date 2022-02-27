@@ -7,6 +7,8 @@ var max = 15400;
 var from = 0;
 var to = 0;
 
+// Ion range slider configuration
+
 $range.ionRangeSlider({
     type: "double",
     grid: true,
@@ -63,4 +65,16 @@ $inputTo.on("change", function () {
     });
 
     $(this).prop("value", val);
+});
+
+// Switch between tabular and map view
+$("#table-map-toggle").change(function () {
+    console.log("toggled");
+    if (this.checked) {
+        $("#table-content").addClass("d-none");
+        $("#map-content").removeClass("d-none");
+    } else {
+        $("#table-content").removeClass("d-none");
+        $("#map-content").addClass("d-none");
+    }
 });

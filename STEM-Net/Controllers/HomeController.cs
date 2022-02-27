@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Devices;
+using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 using STEM_Net.Models;
+using STEM_Net.Services;
 
 namespace STEM_Net.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IWeatherService _weatherService;
+        private readonly IConfiguration _configuration;
+
+        public HomeController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -33,37 +45,89 @@ namespace STEM_Net.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Gets a list of all the trees in the dataset that fall within the specifications of the filter.
+        /// </summary>
+        /// <param name="filter">The filter that specifies which values or range of values should be returned.</param>
+        /// <returns>An HTTP response listing out all the trees that meet the criteria set in the filter.</returns>
+        [HttpPost]
+        public IActionResult GetTrees(Filter filter) {
+
+            //using (DbConnection connection = new MySqlConnection("Server=\"stemnetsensorpushdb.mysql.database.azure.com\";Port=3306;UserID=\"stemnetwork\";Password=\"{TheNameIsNetwork_12}\";Database=\"{stemnettestdb}\";"))
+            //{
+            //    connection.Open();
+            //    using (DbCommand cmd = connection.CreateCommand())
+            //    {
+            //        cmd.CommandText = "SELECT min(measureddatetime), avg(moisture) as moisture FROM SensorMoisture where deviceid=" + deviceId;
+
+            //        using (var reader = cmd.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                //sensor.DeviceId = deviceId;
+            //                //sensor.Moisture = Convert.ToInt32(reader["moisture"]);
+            //                //sensor.Name = "Tree Moisture Sensor";
+            //            }
+            //        }
+            //    }
+            //}
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult GetTabularView(Filter filter) {
+
+            return PartialView("_DataTable", new List<Sensor>());
+        }
+
+        /// <summary>
+        /// Returns the historical data modal for the device with the given ID.
+        /// </summary>
+        /// <param name="deviceId">The device ID of the sensor whose historical data we'd like to retrieve.</param>
+        /// <returns>The partial view displaying the historical data modal.</returns>
         [HttpPost]
         public IActionResult GetHistoricalData(string deviceId)
         {
-            return PartialView("_HistoricalDataModal");
+            Sensor sensor = new Sensor();
+            makeMockSensor(sensor, deviceId);
+            return PartialView("_HistoricalDataModal", sensor);
         }
 
+        /// <summary>
+        /// Gets the latest moisture reading of the device with the given ID.
+        /// </summary>
+        /// <param name="deviceId">The device ID of the sensor whose moisture reading we'd like to retrieve.</param>
+        /// <returns>The partial view displaying the pop-up containing the moisture data of the given device.</returns>
         [HttpPost]
         public IActionResult GetMoisture(string deviceId)
         {
             Sensor sensor = new Sensor();
-            //using (SqlConnection connection = new SqlConnection("Data Source=iotdataserverjoshie.database.windows.net;Initial Catalog=iotdata;User ID=joshie;Password=Pranav_12;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
-            //{
-            //    using (SqlCommand cmd = new SqlCommand("SELECT min(measureddatetime), avg(moisture) as moisture FROM SensorMoisture where deviceid=" + deviceId, connection))
-            //    {
-            //        try
-            //        {
-            //            connection.Open();
-            //            SqlDataReader rdr = cmd.ExecuteReader();
-            //            while (rdr.Read())
-            //            {
-            //                sensor.DeviceId = deviceId;
-            //                sensor.Moisture = Convert.ToInt32(rdr["moisture"]);
-            //                sensor.Name = "Tree Moisture Sensor";
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            makeMockSensor(sensor, deviceId);
-            //        }
-            //    }
-            //}
+            using (DbConnection connection = new MySqlConnection(""))
+            {
+                connection.Open();
+                using (DbCommand cmd = connection.CreateCommand())
+                {
+                    try
+                    {
+                        cmd.CommandText = "SELECT min(measureddatetime), avg(moisture) as moisture FROM SensorMoisture where deviceid=" + deviceId;
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                sensor.DeviceId = deviceId;
+                                sensor.Moisture = Convert.ToInt32(reader["moisture"]);
+                                sensor.Name = "Tree Moisture Sensor";
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        makeMockSensor(sensor, deviceId);
+                    }
+                }
+            }
             makeMockSensor(sensor, deviceId);
             return PartialView("_PreviewPopup", sensor);
         }

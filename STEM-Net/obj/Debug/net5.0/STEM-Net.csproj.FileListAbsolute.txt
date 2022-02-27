@@ -117,3 +117,5 @@ C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\net5.0\ST
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\net5.0\STEM-Net.Views.pdb
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\net5.0\STEM-Net.csproj.CopyComplete
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\net5.0\STEM-Net.genruntimeconfig.cache
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\obj\Debug\net5.0\Razor\Views\Shared\_DataMap.cshtml.g.cs
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\STEM-Net\bin\Debug\net5.0\MySqlConnector.dll

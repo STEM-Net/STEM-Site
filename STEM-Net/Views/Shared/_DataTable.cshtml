@@ -2,6 +2,32 @@
 @model List<Sensor>
 
 <table>
+    <thead>
+        <tr>
+            <th>Device ID</th>
+            <th>Name</th>
+            <th>Moisture</th>
+            <th>Longitude</th>
+            <th>Latituthe</th>
+            <th>Scientific Name</th>
+            <th>Genus</th>
+            <th>Species</th>
+            <th>Tree Age</th>
+            <th>Diameter</th>
+            <th>Height</th>
+            <th>Trunk Height</th>
+            <th>Trunk Diameter</th>
+            <th>Canopy Shape</th>
+            <th>Stems</th>
+            <th>Install Date</th>
+            <th>Maintenance Need</th>
+            <th>Space Width</th>
+            <th>Space Length</th>
+            <th>Vacant Site</th>
+            <th>Active</th>
+            <th>LastUpdate</th>
+        </tr>
+    </thead>
     @{
         foreach (Sensor sensor in Model)
         {

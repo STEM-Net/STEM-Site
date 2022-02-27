@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AyJFKO40m5gYV+1BtVs7bP5ve0ahd33bbmrzYn87JSkgu7Dnupe6939yyb4vadbDACyxfNuF8qW03vN+IOXDRw==",
+  "dgSpecHash": "7n14FlAZZNvSqbIdgFHKLXi0ZWV8OaLtwaeXUaeX2NZ3J+1KUFWdr+vOeEZTjUIFipgrbzOa+i3c4Ax6DOJ4MA==",
   "success": true,
   "projectFilePath": "C:\\Users\\qinjoshua\\source\\repos\\qinjoshua\\STEM-Site\\STEM-Net\\STEM-Net.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\qinjoshua\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\qinjoshua\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\qinjoshua\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\qinjoshua\\.nuget\\packages\\mysqlconnector\\2.1.6\\mysqlconnector.2.1.6.nupkg.sha512",
     "C:\\Users\\qinjoshua\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\qinjoshua\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",

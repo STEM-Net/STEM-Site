@@ -40,6 +40,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "Microsoft.Extensions.Identity.Core": "5.0.11",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.0",
+          "MySqlConnector": "2.1.6",
           "System.Data.SqlClient": "4.8.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -1070,6 +1071,17 @@
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0"
+        }
+      },
+      "MySqlConnector/2.1.6": {
+        "runtime": {
+          "lib/net5.0/MySqlConnector.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.1.6.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MySqlConnector.dll": {}
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -4442,6 +4454,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "MySqlConnector/2.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-btDnflhsn3g3G+9oQKIVh1dmVfGkUphMWFmtAR2lfAm4ir2QnjMfaVDqNLqNNwNNIN5jsUuT25ffivK56DvsOQ==",
+      "path": "mysqlconnector/2.1.6",
+      "hashPath": "mysqlconnector.2.1.6.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",

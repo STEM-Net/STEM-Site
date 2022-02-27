@@ -12,7 +12,7 @@
                 </div>
                 <div class="col">
                     <h4>STREET TREE: @Model.Name</h4>
-                    <h5>ID: @Model.DeviceId</h5>
+                    <h5 id="device-id-heading">ID: @Model.DeviceId</h5>
                 </div>
             </div>
             <div class="row">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col">
                     <div id="chart-wrapper">
-                        <canvas id="myChart"></canvas>
+                        <canvas id="moisture-chart"></canvas>
                     </div>
                     <h2 id="moisture-heading">@Math.Round(Model.Moisture).ToString()%</h2>
                     <h6>Soil Moisture</h6>
@@ -30,10 +30,9 @@
     </div>
     <div id="popup-links">
         <a href="#" style="margin-right: 1rem;">More Information</a>
-        <a href="#" style="margin-right: 1rem;" data-toggle="modal" data-target="#historical-data-modal">Historical Data</a>
-        <a href="#" data-toggle="modal" data-target="#reportModal">Report Actions</a>
+        <a id="a-historical-data" href="#" style="margin-right: 1rem;" data-toggle="modal" data-target="#historical-data-modal">Historical Data</a>
+        <a id="a-report-modal" href="#" data-toggle="modal" data-target="#report-modal">Report Actions</a>
     </div>
 </div>
-
 
 <script src="~/js/popup.js"></script>
