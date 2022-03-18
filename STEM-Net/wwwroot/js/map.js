@@ -16,11 +16,11 @@ function GetMap() {
         //Add authentication details for connecting to Azure Maps.
         authOptions: {
             //Use Azure Active Directory authentication.
-            //authType: 'anonymous',
-            //clientId: "", //Your Azure Active Directory client id for accessing your Azure Maps account.
+            authType: 'anonymous',
+            clientId: "4e169728-0fec-4c3e-bb83-8f1cd15e966d", //Your Azure Active Directory client id for accessing your Azure Maps account.
             //getToken: function (resolve, reject, map) {
             //    //URL to your authentication service that retrieves an Azure Active Directory Token.
-            //    var tokenServiceUrl = "https://azuremapscodesamples.azurewebsites.net/Common/TokenService.ashx";
+            //    var tokenServiceUrl = "https://stemnetpythontestapp.azurewebsites.net/api/httptrigger2";
 
             //    fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
             //}

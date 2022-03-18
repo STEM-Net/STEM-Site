@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using STEM_Net.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using STEM_Net.Data;
+using STEM_Net.Services;
+using STEM_Net.Services.Implementations;
 
 namespace STEM_Net
 {
@@ -35,12 +34,10 @@ namespace STEM_Net
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddHttpClient();
 
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            AddDataRepositories(services);
+            AddApplicationServices(services);
 
             services.AddSingleton<IConfiguration>(Configuration);
 
@@ -48,6 +45,18 @@ namespace STEM_Net
             {
                 options.EnableEndpointRouting = false;
             });
+        }
+
+        // Helper method to add all the data repositories used by the STEM Net application
+        private void AddDataRepositories(IServiceCollection services)
+        {
+            services.AddTransient<ISensorRepository, SensorRepository>();
+        }
+
+        // Helper method to add all application level services to the STEM Net application
+        private void AddApplicationServices(IServiceCollection services)
+        {
+            services.AddHttpClient<IWeatherService, WeatherAzureService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

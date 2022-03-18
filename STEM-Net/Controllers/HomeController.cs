@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Devices;
 using Microsoft.Extensions.Configuration;
 using MySqlConnector;
+using STEM_Net.Data;
 using STEM_Net.Models;
 using STEM_Net.Services;
 
@@ -17,11 +18,12 @@ namespace STEM_Net.Controllers
     public class HomeController : Controller
     {
         private readonly IWeatherService _weatherService;
-        private readonly IConfiguration _configuration;
+        private readonly ISensorRepository _sensorRepository;
 
-        public HomeController(IConfiguration configuration)
+        public HomeController(ISensorRepository sensorRepository, IWeatherService weatherService)
         {
-            _configuration = configuration;
+            _sensorRepository = sensorRepository;
+            _weatherService = weatherService;
         }
 
         public IActionResult Index()
@@ -53,7 +55,7 @@ namespace STEM_Net.Controllers
         [HttpPost]
         public IActionResult GetTrees(Filter filter) {
 
-            //using (DbConnection connection = new MySqlConnection("Server=\"stemnetsensorpushdb.mysql.database.azure.com\";Port=3306;UserID=\"stemnetwork\";Password=\"{TheNameIsNetwork_12}\";Database=\"{stemnettestdb}\";"))
+            //using (DbConnection connection = new MySqlConnection("Server=\"stemnetsensorpushdb.mysql.database.azure.com\";Port=3306;UserID=\"stemnetwork\";Password=\"{}\";Database=\"{stemnettestdb}\";"))
             //{
             //    connection.Open();
             //    using (DbCommand cmd = connection.CreateCommand())
@@ -103,7 +105,7 @@ namespace STEM_Net.Controllers
         public IActionResult GetMoisture(string deviceId)
         {
             Sensor sensor = new Sensor();
-            using (DbConnection connection = new MySqlConnection(""))
+            using (DbConnection connection = new MySqlConnection("Server=\"stemnetsensorpushdb.mysql.database.azure.com\";Port=3306;UserID=\"stemnetwork\";Password=\"{}\";Database=\"{stemnettestdb}\";"))
             {
                 connection.Open();
                 using (DbCommand cmd = connection.CreateCommand())
