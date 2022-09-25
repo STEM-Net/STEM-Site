@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Devices;
 using Microsoft.Extensions.Configuration;
-using MySqlConnector;
 using STEM_Net.Data;
 using STEM_Net.Models;
 using STEM_Net.Services;
@@ -105,7 +104,7 @@ namespace STEM_Net.Controllers
         public IActionResult GetMoisture(string deviceId)
         {
             Sensor sensor = new Sensor();
-            using (DbConnection connection = new MySqlConnection("Server=\"stemnetsensorpushdb.mysql.database.azure.com\";Port=3306;UserID=\"stemnetwork\";Password=\"{}\";Database=\"{stemnettestdb}\";"))
+            using (DbConnection connection = new SqlConnection("Server=\"stemnetcentraldb.database.windows.net\";Port=3306;UserID=\"stemnetwork\";Password=\"{}\";Database=\"{stemnettestdb}\";"))
             {
                 connection.Open();
                 using (DbCommand cmd = connection.CreateCommand())
@@ -143,6 +142,24 @@ namespace STEM_Net.Controllers
             sensor.Name = "Tree Moisture Sensor";
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetCurrentTemperature(double longitude, double latitude)
+        {
+            return Ok(await _weatherService.GetTemperatureAsync(longitude, latitude).ConfigureAwait(false));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCurrentPrecipitation(double longitude, double latitude)
+        {
+            return Ok(await _weatherService.GetPrecipitationAsync(longitude, latitude).ConfigureAwait(false));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPrecipitationHourly(double longitude, double latitude, int hours)
+        {
+            return Ok(await _weatherService.GetHourlyPrecipitationAsync(longitude, latitude, hours).ConfigureAwait(false));
+        }
+
         //[HttpPost]
         //public IActionResult GetDetails(string deviceId)
         //{
@@ -151,9 +168,7 @@ namespace STEM_Net.Controllers
 
 
         //    return deviceId;
-        //}
-
-        [HttpPost]
+        //}  [HttpPost]
         async public Task<IActionResult> ListDevices()
         {
             var jsons = new List<string>();
@@ -163,7 +178,7 @@ namespace STEM_Net.Controllers
             var query = registryManager.CreateQuery("SELECT * FROM devices");
             while (query.HasMoreResults)
             {
-                var page = await query.GetNextAsJsonAsync();
+                var page = await query.GetNextAsJsonAsync().ConfigureAwait(false);
                 foreach (var json in page)
                 {
                     jsons.Add(json);

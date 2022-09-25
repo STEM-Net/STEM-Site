@@ -53,9 +53,8 @@
             <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
             <link href="../css/map.css" rel="stylesheet" />
-            <script src="../js/map.js"></script>
 
-            <div id="myMap" style="width: 100%; height: 100%;"></div>
+            <div id="trees-map" style="width: 100%; height: 100%;"></div>
             <div id="search">
                 <div class="search-input-box">
                     <div class="search-input-group">
@@ -65,72 +64,77 @@
                 </div>
                 <ul id="results-panel"></ul>
             </div>
-            <script type="text/javascript">
-                GetMap();
-            </script>
         </div>
         <div id="sidebar" class="fixed">
-            <div class="sidebar-header">
-                <h2>Filters</h2>
+            <div id="sidebar-toggle">
+                <span class="arrow">
+                    <span></span>
+                    <span></span>
+                </span>
             </div>
-            <div class="h-divider">
-            </div>
-            <div class="bs-component">
-                <form>
-                    <fieldset>
-                        <fieldset class="form-group">
-                            <label for="select-species">Species</label>
-                            <select id="select-species" class="form-control selectpicker" data-live-search="true">
-                                <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-                            </select>
-                        </fieldset>
+            <div id="sidebar-content">
+                <div class="sidebar-header">
+                    <h2>Filters</h2>
+                </div>
+                <div class="h-divider">
+                </div>
+                <div class="bs-component">
+                    <form>
+                        <fieldset>
+                            <fieldset class="form-group">
+                                <label for="select-species">Species</label>
+                                <select id="select-species" class="form-control selectpicker" data-live-search="true">
+                                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                    <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                    <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                </select>
+                            </fieldset>
 
-                        <fieldset class="form-group">
-                            <label for="select-age">Age Class</label>
-                            <select id="select-age" class="form-control selectpicker">
-                                <option>None selected</option>
-                                <option>Seedling</option>>
-                                <option>Sapling</option>
-                                <option>Pole</option>
-                                <option>Mature</option>
-                            </select>
-                        </fieldset>
+                            <fieldset class="form-group">
+                                <label for="select-age">Age Class</label>
+                                <select id="select-age" class="form-control selectpicker">
+                                    <option>None selected</option>
+                                    <option>Seedling</option>>
+                                    <option>Sapling</option>
+                                    <option>Pole</option>
+                                    <option>Mature</option>
+                                </select>
+                            </fieldset>
 
-                        <fieldset class="form-group">
-                            <label for="select-owner">Landownership Type</label>
-                            <select id="select-owner" class="form-control selectpicker">
-                                <option>None selected</option>
-                                <option>City Property</option>
-                                <option>City Park</option>
-                                <option>Private</option>
-                            </select>
-                        </fieldset>
+                            <fieldset class="form-group">
+                                <label for="select-owner">Landownership Type</label>
+                                <select id="select-owner" class="form-control selectpicker">
+                                    <option>None selected</option>
+                                    <option>City Property</option>
+                                    <option>City Park</option>
+                                    <option>Private</option>
+                                </select>
+                            </fieldset>
 
-                        <fieldset class="form-group">
-                            <label for="select-diameter">Diameter</label>
-                            <select id="select-owner" class="form-control selectpicker">
-                                <option>None selected</option>
-                                <option>None selected</option>
-                                <option>None selected</option>
-                                <option>None selected</option>
-                            </select>
-                        </fieldset>
+                            <fieldset class="form-group">
+                                <label for="select-diameter">Diameter</label>
+                                <select id="select-owner" class="form-control selectpicker">
+                                    <option>None selected</option>
+                                    <option>None selected</option>
+                                    <option>None selected</option>
+                                    <option>None selected</option>
+                                </select>
+                            </fieldset>
 
-                        <fieldset class="form-group">
-                            <label for="rangeMoisture">Moisture</label>
-                            <div class="form-control-wrap">
-                                <input id="rangeMoisture" type="text" class="js-range-slider" name="my_range" value="" />
-                            </div>
-                        </fieldset>
+                            <fieldset class="form-group">
+                                <label for="rangeMoisture">Moisture</label>
+                                <div class="form-control-wrap">
+                                    <input id="rangeMoisture" type="text" class="js-range-slider" name="my_range" value="" />
+                                </div>
+                            </fieldset>
 
-                        <fieldset class="form-group" style="margin-top: 2rem">
-                            <button type="reset" class="btn btn-secondary">Clear Filters</button>
-                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                            <fieldset class="form-group" style="margin-top: 2rem">
+                                <button type="reset" class="btn btn-secondary">Clear Filters</button>
+                                <button type="submit" class="btn btn-primary">Apply Filters</button>
+                            </fieldset>
                         </fieldset>
-                    </fieldset>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -227,3 +231,7 @@
 </script>
 <script src="~/js/main.js"></script>
 <script src="~/js/popup.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    GetMap();
+</script>

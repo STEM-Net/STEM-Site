@@ -8,11 +8,15 @@ body {
     font-family: segoeui;
 }
 
-#myMap {
+#trees-map {
     position: relative;
     width: 100%;
     height: 100%;
 }
+
+    #trees-map.sidebar-collapse {
+        width: 100%;
+    }
 
 #search {
     position: absolute;

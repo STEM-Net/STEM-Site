@@ -28,7 +28,7 @@ namespace TestSTEM_Net
         [TestMethod]
         public async Task TestGetPrecipitation()
         {
-            double precip = await _azureWeather.GetPrecipitationAsync(37.33811209295251, -121.88538465277796, 0);
+            double precip = await _azureWeather.GetPrecipitationAsync(37.33811209295251, -121.88538465277796, 0).ConfigureAwait(false);
             Assert.IsTrue(precip >= 0);
             //System.Diagnostics.Debug.WriteLine(precip);
         }
@@ -36,7 +36,7 @@ namespace TestSTEM_Net
         [TestMethod]
         public async Task TestGetHourlyPrecipitation()
         {
-            List<double> precips = await _azureWeather.GetHourlyPrecipitationAsync(37.33811209295251, -121.88538465277796, 24);
+            List<double> precips = await _azureWeather.GetHourlyPrecipitationAsync(37.33811209295251, -121.88538465277796, 24).ConfigureAwait(false);
             Assert.IsTrue(precips.Count == 24);
             Assert.IsTrue(precips[0] >= 0);
         }
@@ -44,7 +44,7 @@ namespace TestSTEM_Net
         [TestMethod]
         public async Task TestGetTemperature()
         {
-            double temp = await _azureWeather.GetTemperatureAsync(37.33811209295251, -121.88538465277796);
+            double temp = await _azureWeather.GetTemperatureAsync(37.33811209295251, -121.88538465277796).ConfigureAwait(false);
             Assert.IsTrue(temp > 15 && temp < 110);
             System.Diagnostics.Debug.WriteLine(temp);
         }

@@ -36,8 +36,8 @@ namespace STEM_Net.Services.Implementations
                 $"&duration={details}" +
                 $"&subscription-key={_configuration["AzureMapsSubscriptionKey"]}";
 
-            HttpResponseMessage jsonResponse = await _client.GetAsync(url);
-            string responseBody = await jsonResponse.Content.ReadAsStringAsync();
+            HttpResponseMessage jsonResponse = await _client.GetAsync(url).ConfigureAwait(false);
+            string responseBody = await jsonResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             var deserializedResponse = JsonSerializer.Deserialize<Dictionary<string, List<JsonElement>>>(responseBody);
             return deserializedResponse["results"];
@@ -47,7 +47,7 @@ namespace STEM_Net.Services.Implementations
         {
             CheckValidHoursPrior(hoursPrior);
             List<double> hourlyPrecipitations = new List<double>();
-            List<JsonElement> response = await CallAzureWeatherAPI(longitude, latitude, hoursPrior, true);
+            List<JsonElement> response = await CallAzureWeatherAPI(longitude, latitude, hoursPrior, true).ConfigureAwait(false);
             foreach (JsonElement hourData in response) {
                 hourlyPrecipitations.Add(hourData.GetProperty("precipitationSummary").GetProperty("pastHour").GetProperty("value").GetDouble());
             }
@@ -58,18 +58,18 @@ namespace STEM_Net.Services.Implementations
         public async Task<double> GetPrecipitationAsync(double longitude, double latitude, int hoursPrior)
         {
             CheckValidHoursPrior(hoursPrior);
-            List<double> hourlyPrecipitations = await GetHourlyPrecipitationAsync(longitude, latitude, hoursPrior);
+            List<double> hourlyPrecipitations = await GetHourlyPrecipitationAsync(longitude, latitude, hoursPrior).ConfigureAwait(false);
             return hourlyPrecipitations.Sum();
         }
 
         public async Task<double> GetPrecipitationAsync(double longitude, double latitude)
         {
-            return await GetPrecipitationAsync(longitude, latitude, 0);
+            return await GetPrecipitationAsync(longitude, latitude, 0).ConfigureAwait(false);
         }
 
         public async Task<double> GetTemperatureAsync(double longitude, double latitude)
         {
-            List<JsonElement> response = await CallAzureWeatherAPI(longitude, latitude);
+            List<JsonElement> response = await CallAzureWeatherAPI(longitude, latitude).ConfigureAwait(false);
             return response.First().GetProperty("temperature").GetProperty("value").GetDouble();
         }
 
