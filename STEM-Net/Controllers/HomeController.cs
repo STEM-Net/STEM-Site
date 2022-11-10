@@ -160,6 +160,13 @@ namespace STEM_Net.Controllers
             return Ok(await _weatherService.GetHourlyPrecipitationAsync(longitude, latitude, hours).ConfigureAwait(false));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get24HourPrecipitation(double longitude, double latitude, int hours)
+        {
+            List<double> hourlyPrecip = await _weatherService.GetHourlyPrecipitationAsync(longitude, latitude, hours).ConfigureAwait(false);
+            return Ok(hourlyPrecip.Sum());
+        }
+
         //[HttpPost]
         //public IActionResult GetDetails(string deviceId)
         //{

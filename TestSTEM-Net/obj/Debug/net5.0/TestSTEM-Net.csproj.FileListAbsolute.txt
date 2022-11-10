@@ -53,7 +53,6 @@ C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
-C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\MySqlConnector.dll
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\NuGet.Frameworks.dll
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\System.Composition.AttributedModel.dll
@@ -134,3 +133,9 @@ C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\obj\Debug\net5.
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\obj\Debug\net5.0\ref\TestSTEM-Net.dll
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\obj\Debug\net5.0\TestSTEM-Net.pdb
 C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\obj\Debug\net5.0\TestSTEM-Net.genruntimeconfig.cache
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\System.Data.SqlClient.dll
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\qinjoshua\source\repos\qinjoshua\STEM-Site\TestSTEM-Net\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

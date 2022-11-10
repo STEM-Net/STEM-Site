@@ -6,6 +6,12 @@ var min = 0;
 var max = 15400;
 var from = 0;
 var to = 0;
+var startLon = -121.885581;
+var startLat = 37.337715;
+
+// Initialize the toolbar on page startup
+setPrecipitation(startLon, startLat);
+setTemperature(startLon, startLat);
 
 // Allow sidebar resizing
 window.onload = function () {
@@ -40,12 +46,12 @@ function GetMap() {
             //Use Azure Active Directory authentication.
             authType: 'anonymous',
             clientId: "4e169728-0fec-4c3e-bb83-8f1cd15e966d", //Your Azure Active Directory client id for accessing your Azure Maps account.
-            //getToken: function (resolve, reject, map) {
-            //    //URL to your authentication service that retrieves an Azure Active Directory Token.
-            //    var tokenServiceUrl = "https://stemnetpythontestapp.azurewebsites.net/api/httptrigger2";
+            getToken: function (resolve, reject, map) {
+                //URL to your authentication service that retrieves an Azure Active Directory Token.
+                var tokenServiceUrl = "https://stemnetpythontestapp.azurewebsites.net/api/httptrigger2";
 
-            //    fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
-            //}
+                fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
+            }
 
         }
     });
@@ -113,6 +119,8 @@ function GetMap() {
 
         //Add click events to the polygon and line layers.
         map.events.add('click', [pointLayer], featureClicked);
+
+        map.events.add('moveend', mapMoveEnded);
 
         //Add a style control to the map.
         map.controls.add(new atlas.control.StyleControl({
@@ -223,6 +231,8 @@ function itemClicked(id) {
         center: shape.getCoordinates(),
         zoom: 17
     });
+    // Remove the search results
+    resultsPanel.innerHTML = '';
 }
 
 function showPopup(shape) {
@@ -255,6 +265,13 @@ function showPopup(shape) {
         content: html.join('')
     });
     popup.open(map);
+}
+
+function mapMoveEnded(e) {
+    var lon = map.getCamera().center[0];
+    var lat = map.getCamera().center[1];
+    setPrecipitation(lon, lat);
+    setTemperature(lon, lat);
 }
 
 function featureClicked(e) {
@@ -382,3 +399,52 @@ $('#sidebar-toggle').on('click', function () {
     $('#sidebar').toggleClass('active');
     $('#trees-map').toggleClass('sidebar-collapse');
 });
+
+//// These functions are used to set values in the toolbar
+
+/**
+ * Sets the 24 hour precipitation value in the toolbar
+ * 
+ * @param {any} lon Longitude of location where to take the precipitation value
+ * @param {any} lat Latitude of location where to take the precipitation value
+ */
+async function setPrecipitation(lon, lat) {
+    $.ajax({
+        url: "../Home/Get24HourPrecipitation",
+        type: "GET",
+        data: {
+            longitude: lon,
+            latitude: lat,
+            hours: 24
+        },
+        success: function (data) {
+            $('#twenty-four-hour-precip').html(Math.round(data * 1000) / 1000 + " in");
+        },
+        error: function () {
+            $('#twenty-four-hour-precip').html("-- in");
+        }
+    });
+}
+
+/**
+ * Sets the temperature value in the toolbar
+ *
+ * @param {any} lon Longitude of location where to take the temperature value
+ * @param {any} lat Latitude of location where to take the temperature value
+ */
+async function setTemperature(lon, lat) {
+    $.ajax({
+        url: "../Home/GetCurrentTemperature",
+        type: "GET",
+        data: {
+            longitude: lon,
+            latitude: lat
+        },
+        success: function (data) {
+            $('#current-temperature').html(Math.round(data * 100) / 100 + "°");
+        },
+        error: function () {
+            $('#current-temperature').html("-- in");
+        }
+    });
+}

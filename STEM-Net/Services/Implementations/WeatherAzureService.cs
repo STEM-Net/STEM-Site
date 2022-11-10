@@ -30,7 +30,7 @@ namespace STEM_Net.Services.Implementations
             string urlBase = "https://atlas.microsoft.com/weather/currentConditions/json?";
             string url = urlBase + 
                 $"api-version={apiVersion}" +
-                $"&query={longitude},{latitude}" +
+                $"&query={latitude},{longitude}" +
                 $"&unit=imperial" +
                 $"&duration={hoursPrior}" +
                 $"&duration={details}" +
