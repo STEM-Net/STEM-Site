@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "r8AgohEJwg5bAMFrt4FDcBubpVT8xNwsjHJgrdyd6OupZEhN8mYaQ2HxLgURj7njVaRQhck7uCDRy3mPc75LLw==",
+  "dgSpecHash": "9kjWCBQWeSklAW87+wBIfwcgOop6ggztKqzu7bLvESx+xX19dq6627AcaWX/yhWgJfRr09t/WlrhMRbC47v9zg==",
   "success": true,
   "projectFilePath": "C:\\Users\\qinjoshua\\source\\repos\\qinjoshua\\STEM-Site\\TestSTEM-Net\\TestSTEM-Net.csproj",
   "expectedPackageFiles": [
@@ -155,7 +155,10 @@
     "C:\\Users\\qinjoshua\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\qinjoshua\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\qinjoshua\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\qinjoshua\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

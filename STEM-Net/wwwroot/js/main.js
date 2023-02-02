@@ -46,12 +46,12 @@ function GetMap() {
             //Use Azure Active Directory authentication.
             authType: 'anonymous',
             clientId: "4e169728-0fec-4c3e-bb83-8f1cd15e966d", //Your Azure Active Directory client id for accessing your Azure Maps account.
-            getToken: function (resolve, reject, map) {
-                //URL to your authentication service that retrieves an Azure Active Directory Token.
-                var tokenServiceUrl = "https://stemnetpythontestapp.azurewebsites.net/api/httptrigger2";
+            //getToken: function (resolve, reject, map) {
+            //    //URL to your authentication service that retrieves an Azure Active Directory Token.
+            //    var tokenServiceUrl = "https://stemnetpythontestapp.azurewebsites.net/api/httptrigger2";
 
-                fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
-            }
+            //    fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
+            //}
 
         }
     });
@@ -401,6 +401,30 @@ $('#sidebar-toggle').on('click', function () {
 });
 
 //// These functions are used to set values in the toolbar
+
+/**
+ * Sets the 72 hour precipitation value in the toolbar
+ * 
+ * @param {any} lon Longitude of location where to take the precipitation value
+ * @param {any} lat Latitude of location where to take the precipitation value
+ */
+async function setPrecipitation(lon, lat) {
+    $.ajax({
+        url: "../Home/Get72HourPrecipitation",
+        type: "GET",
+        data: {
+            longitude: lon,
+            latitude: lat,
+            hours: 72
+        },
+        success: function (data) {
+            $('#seventy-two-hour-precip').html(Math.round(data * 1000) / 1000 + " in");
+        },
+        error: function () {
+            $('#seventy-two-hour-precip').html("-- in");
+        }
+    });
+}
 
 /**
  * Sets the 24 hour precipitation value in the toolbar
